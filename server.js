@@ -18,6 +18,16 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(session(SESSION_CONFIG));
 
+// ─── Subdomain Routing Middleware ──────────────────────────────────────────────
+app.use((req, res, next) => {
+  const host = req.headers.host || '';
+  // If the subdomain is "admin", map root "/" requests to "/admin" internally
+  if (host.toLowerCase().startsWith('admin.') && req.path === '/') {
+    req.url = '/admin';
+  }
+  next();
+});
+
 // ─── Static Files ──────────────────────────────────────────────────────────────
 app.use(express.static(path.join(__dirname, 'public')));
 

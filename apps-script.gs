@@ -1,17 +1,17 @@
 /**
  * ═══════════════════════════════════════════════════════════════════════════
- * Summer Shine 3.0 — Google Apps Script
+ * Summer Shine 3.0 — Google Apps Script (UPDATED)
  * 
- * HOW TO USE:
- * 1. Open your Google Sheet
- * 2. Click Extensions → Apps Script
- * 3. Delete any existing code and paste THIS entire file
- * 4. Click Save (💾), then Deploy → New deployment
- * 5. Type: Web app | Execute as: Me | Who has access: Anyone
- * 6. Click Deploy → copy the Web App URL
- * 7. Paste the URL into sheets-config.js on your server
+ * Safe for both:
+ * 1. Bound Scripts (Opened from Extensions ➡️ Apps Script inside a sheet)
+ * 2. Standalone Scripts (Created directly on script.google.com)
  * ═══════════════════════════════════════════════════════════════════════════
  */
+
+// ─── OPTIONAL: Paste your Google Sheet ID below ──────────────────────────────
+// Only needed if you created this script directly from script.google.com
+// Leave it blank if you opened Apps Script from Extensions -> Apps Script
+const SPREADSHEET_ID = ''; 
 
 // ─── Column headers (written once when a sheet is first created) ──────────────
 const HEADERS = [
@@ -38,11 +38,27 @@ const COLORS = {
   updatedBg:     '#FFF3B0',  // audit row highlight
 };
 
+// ─── Helper to open the spreadsheet safely ───────────────────────────────────
+function getSpreadsheet() {
+  if (SPREADSHEET_ID && SPREADSHEET_ID.trim() !== '') {
+    return SpreadsheetApp.openById(SPREADSHEET_ID.trim());
+  }
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  if (!ss) {
+    throw new Error(
+      "Spreadsheet not found! Make sure you either:\n" +
+      "1. Opened Apps Script from Extensions ➡️ Apps Script inside your Google Sheet.\n" +
+      "2. Or pasted your Spreadsheet ID into the SPREADSHEET_ID variable at the top of this script."
+    );
+  }
+  return ss;
+}
+
 // ─── Entry point — called by every POST from the Node server ──────────────────
 function doPost(e) {
   try {
     const payload = JSON.parse(e.postData.contents);
-    const ss      = SpreadsheetApp.getActiveSpreadsheet();
+    const ss      = getSpreadsheet();
 
     if (payload.action === 'register') {
       handleRegister(ss, payload);
@@ -59,9 +75,24 @@ function doPost(e) {
   }
 }
 
-// ─── Also support GET (useful for testing the URL is working) ─────────────────
+// ─── Support GET for troubleshooting ──────────────────────────────────────────
 function doGet(e) {
-  return jsonResponse({ ok: true, app: 'Summer Shine 3.0 Registration Sync', version: '1.0' });
+  try {
+    const ss = getSpreadsheet();
+    return jsonResponse({ 
+      ok: true, 
+      app: 'Summer Shine 3.0 Registration Sync', 
+      version: '1.1',
+      connectedSheet: ss.getName()
+    });
+  } catch (err) {
+    return jsonResponse({ 
+      ok: false, 
+      app: 'Summer Shine 3.0 Registration Sync', 
+      version: '1.1',
+      error: err.toString()
+    });
+  }
 }
 
 // ══════════════════════════════════════════════════════════════════════════════
@@ -89,7 +120,6 @@ function handleRegister(ss, reg) {
 
 function handleEdit(ss, reg) {
   const activities = formatActivities(reg.activities);
-  // Append an audit row to "All Registrations" so edits are traceable
   const allSheet = getOrCreateSheet(ss, 'All Registrations', COLORS.allBg);
   const auditRow = ['[UPDATED] #' + (reg.id || '?')].concat(buildRow(reg, activities).slice(1));
   appendStyledRow(allSheet, auditRow, true);
@@ -97,7 +127,6 @@ function handleEdit(ss, reg) {
 }
 
 function handleDelete(ss, reg) {
-  // Append a deletion audit row instead of removing (keep data history)
   const allSheet = getOrCreateSheet(ss, 'All Registrations', COLORS.allBg);
   const auditRow = ['[DELETED] #' + (reg.id || '?'), reg.student_name || '', '', '', '', '', '', reg.zone || '', '', new Date().toLocaleString()];
   appendStyledRow(allSheet, auditRow, true);
@@ -140,7 +169,6 @@ function getOrCreateSheet(ss, name, altRowColor) {
 }
 
 function styleNewSheet(sheet, altRowColor) {
-  // Write + style header row
   sheet.appendRow(HEADERS);
   const headerRange = sheet.getRange(1, 1, 1, HEADERS.length);
   headerRange.setBackground(COLORS.headerBg);
@@ -149,10 +177,8 @@ function styleNewSheet(sheet, altRowColor) {
   headerRange.setFontSize(11);
   headerRange.setHorizontalAlignment('center');
 
-  // Freeze header row
   sheet.setFrozenRows(1);
 
-  // Set column widths for readability
   sheet.setColumnWidth(1, 50);   // No.
   sheet.setColumnWidth(2, 180);  // Student Name
   sheet.setColumnWidth(3, 180);  // Guardian Name
@@ -163,9 +189,6 @@ function styleNewSheet(sheet, altRowColor) {
   sheet.setColumnWidth(8, 110);  // Zone
   sheet.setColumnWidth(9, 340);  // Activities
   sheet.setColumnWidth(10, 160); // Submitted At
-
-  // Store the alt row color as a named range property (for new rows)
-  // We'll just use a default alt-row color for now
 }
 
 function appendStyledRow(sheet, row, isAudit) {
@@ -177,11 +200,9 @@ function appendStyledRow(sheet, row, isAudit) {
     rowRange.setBackground(COLORS.updatedBg);
     rowRange.setFontStyle('italic');
   } else {
-    // Alternating row color
     rowRange.setBackground(lastRow % 2 === 0 ? '#FFFFFF' : COLORS.altRow);
   }
 
-  // Wrap text in Activities column
   sheet.getRange(lastRow, 9).setWrap(true);
 }
 
