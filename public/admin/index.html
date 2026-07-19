@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin — Summer Shine 3.0</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="stylesheet" href="/admin/admin.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔒</text></svg>" />
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════════════════
+       LOGIN SCREEN
+  ══════════════════════════════════════════════════════════ -->
+  <div id="login-screen">
+    <div class="login-card">
+      <div class="login-logo">
+        <span class="sun">☀️</span>
+        <h1>Summer Shine 3.0</h1>
+        <p>Admin Dashboard — Authorized Access Only</p>
+      </div>
+
+      <form id="login-form" novalidate>
+        <div class="login-field">
+          <label class="login-label" for="login-username">Username</label>
+          <input
+            type="text"
+            id="login-username"
+            class="login-input"
+            placeholder="Enter username"
+            autocomplete="username"
+            required
+            aria-required="true"
+          />
+        </div>
+
+        <div class="login-field">
+          <label class="login-label" for="login-password">Password</label>
+          <input
+            type="password"
+            id="login-password"
+            class="login-input"
+            placeholder="Enter password"
+            autocomplete="current-password"
+            required
+            aria-required="true"
+          />
+        </div>
+
+        <button type="submit" class="login-btn" id="login-btn">Sign In →</button>
+        <p class="login-error" id="login-error" role="alert"></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       DASHBOARD SCREEN
+  ══════════════════════════════════════════════════════════ -->
+  <div id="dashboard-screen">
+
+    <!-- Mobile overlay -->
+    <div class="overlay" id="sidebar-overlay"></div>
+
+    <!-- Mobile hamburger -->
+    <button class="hamburger" id="hamburger-btn" aria-label="Open menu">☰</button>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar" aria-label="Admin navigation">
+      <div class="sidebar-logo">
+        <span class="logo-icon">☀️</span>
+        <h2>Summer Shine 3.0</h2>
+        <p>Admin Dashboard</p>
+      </div>
+
+      <nav class="sidebar-nav">
+        <button class="nav-item active" id="nav-registrations">
+          📋 Registrations
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="admin-badge">
+          <div class="admin-avatar">👤</div>
+          <div class="admin-info">
+            <p id="admin-username-display">—</p>
+            <span id="admin-role-display">—</span>
+          </div>
+        </div>
+        <button class="logout-btn" id="logout-btn">Sign Out</button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content" aria-label="Dashboard content">
+
+      <!-- Stats bar -->
+      <div class="stats-bar" id="stats-bar">
+        <div class="stat-card">
+          <div class="stat-icon yellow">🎓</div>
+          <div>
+            <div class="stat-value" id="stat-total">—</div>
+            <div class="stat-label">Total Registered</div>
+          </div>
+        </div>
+        <div class="stat-card" id="stat-muharraq-card">
+          <div class="stat-icon sky">🏙️</div>
+          <div>
+            <div class="stat-value" id="stat-muharraq">—</div>
+            <div class="stat-label">Muharraq Zone</div>
+          </div>
+        </div>
+        <div class="stat-card" id="stat-manama-card">
+          <div class="stat-icon green">🌆</div>
+          <div>
+            <div class="stat-value" id="stat-manama">—</div>
+            <div class="stat-label">Manama Zone</div>
+          </div>
+        </div>
+        <div class="stat-card" id="stat-riffa-card">
+          <div class="stat-icon coral">🏘️</div>
+          <div>
+            <div class="stat-value" id="stat-riffa">—</div>
+            <div class="stat-label">Riffa Zone</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Zone tabs (supreme admin only) -->
+      <div class="zone-tabs" id="zone-tabs" style="display:none;" role="tablist" aria-label="Zone filter">
+        <button class="zone-tab active" data-zone="All"       role="tab" aria-selected="true">All Zones</button>
+        <button class="zone-tab"        data-zone="Muharraq"  role="tab" aria-selected="false">Muharraq</button>
+        <button class="zone-tab"        data-zone="Manama"    role="tab" aria-selected="false">Manama</button>
+        <button class="zone-tab"        data-zone="Riffa"     role="tab" aria-selected="false">Riffa</button>
+      </div>
+
+      <!-- Controls bar -->
+      <div class="controls-bar">
+        <input
+          type="search"
+          class="search-input"
+          id="search-input"
+          placeholder="🔍 Search by name or guardian…"
+          aria-label="Search registrations"
+        />
+        <select class="filter-select" id="class-filter" aria-label="Filter by class">
+          <option value="All">All Grades</option>
+          <option value="Grade 3">Grade 3</option>
+          <option value="Grade 4">Grade 4</option>
+          <option value="Grade 5">Grade 5</option>
+          <option value="Grade 6">Grade 6</option>
+          <option value="Grade 7">Grade 7</option>
+          <option value="Grade 8">Grade 8</option>
+          <option value="Grade 9">Grade 9</option>
+          <option value="Grade 10">Grade 10</option>
+        </select>
+        <button class="export-btn" id="export-btn" aria-label="Export to Excel">
+          📊 Export to Excel
+        </button>
+      </div>
+
+      <!-- Table -->
+      <div class="table-wrapper">
+        <div class="table-scroll">
+          <table class="reg-table" id="reg-table" aria-label="Registrations table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Student Name</th>
+                <th>Guardian's Name</th>
+                <th>Contact</th>
+                <th>Class</th>
+                <th>Age</th>
+                <th>Area</th>
+                <th>Zone</th>
+                <th>Activities</th>
+                <th>Submitted</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="reg-tbody">
+              <tr>
+                <td colspan="10" style="text-align:center; padding:3rem; color: var(--text-light);">
+                  <span class="spinner"></span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- ══ EDIT MODAL ══════════════════════════════════════════════════════ -->
+  <div class="modal-backdrop" id="edit-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h2 id="modal-title">✏️ Edit Registration</h2>
+        <button class="modal-close" id="modal-close-btn" aria-label="Close">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-error" id="modal-error"></div>
+        <form id="edit-form" novalidate>
+          <input type="hidden" id="edit-id" />
+          <div class="mfield">
+            <label for="edit-student-name">Student's Full Name *</label>
+            <input type="text" id="edit-student-name" placeholder="Student name" required />
+          </div>
+          <div class="mfield">
+            <label for="edit-guardian-name">Guardian's Full Name *</label>
+            <input type="text" id="edit-guardian-name" placeholder="Guardian name" required />
+          </div>
+          <div class="mfield-row">
+            <div class="mfield">
+              <label for="edit-contact">Contact Number *</label>
+              <input type="tel" id="edit-contact" placeholder="e.g. 33001234" required />
+            </div>
+            <div class="mfield">
+              <label for="edit-age">Age *</label>
+              <input type="number" id="edit-age" min="6" max="18" placeholder="6–18" required />
+            </div>
+          </div>
+          <div class="mfield-row">
+            <div class="mfield">
+              <label for="edit-class">Class / Grade *</label>
+              <select id="edit-class" required>
+                <option value="">Select grade…</option>
+                <option>Grade 3</option><option>Grade 4</option><option>Grade 5</option>
+                <option>Grade 6</option><option>Grade 7</option><option>Grade 8</option>
+                <option>Grade 9</option><option>Grade 10</option>
+              </select>
+            </div>
+            <div class="mfield">
+              <label for="edit-area">Residing Area *</label>
+              <select id="edit-area" required>
+                <option value="">Select area…</option>
+                <option value="GUDAIBIYA">Gudaibiya</option>
+                <option value="CASENO">Caseno</option>
+                <option value="HIDD">Hidd</option>
+                <option value="JUFFAIR">Juffair</option>
+                <option value="SALMABAD">Salmabad</option>
+                <option value="SALMANIYA">Salmaniya</option>
+                <option value="BUDAYYA">Budayya</option>
+                <option value="KHALEEFA">Khaleefa</option>
+                <option value="SANAD">Sanad</option>
+                <option value="HAMAD TOWN">Hamad Town</option>
+                <option value="ISA TOWN">Isa Town</option>
+              </select>
+            </div>
+          </div>
+          <div class="mfield">
+            <label>Activities</label>
+            <div class="modal-activities">
+              <input type="checkbox" id="ma1" class="mac-input" value="Outdoor Exploration &amp; Nature Walks" /><label class="mac-label" for="ma1">🌿 Outdoor Exploration &amp; Nature Walks</label>
+              <input type="checkbox" id="ma2" class="mac-input" value="Physical Activities &amp; Sports" /><label class="mac-label" for="ma2">⚽ Physical Activities &amp; Sports</label>
+              <input type="checkbox" id="ma3" class="mac-input" value="Creative &amp; Artistic Expression" /><label class="mac-label" for="ma3">🎨 Creative &amp; Artistic Expression</label>
+              <input type="checkbox" id="ma4" class="mac-input" value="STEM/STEAM Activities" /><label class="mac-label" for="ma4">🔬 STEM/STEAM Activities</label>
+              <input type="checkbox" id="ma5" class="mac-input" value="Problem Solving &amp; Brain Games" /><label class="mac-label" for="ma5">🧩 Problem Solving &amp; Brain Games</label>
+              <input type="checkbox" id="ma6" class="mac-input" value="Social &amp; Emotional Learning" /><label class="mac-label" for="ma6">💛 Social &amp; Emotional Learning</label>
+              <input type="checkbox" id="ma7" class="mac-input" value="DIY Craft Workshops" /><label class="mac-label" for="ma7">✂️ DIY Craft Workshops</label>
+              <input type="checkbox" id="ma8" class="mac-input" value="Technology &amp; Media" /><label class="mac-label" for="ma8">💻 Technology &amp; Media</label>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-modal-cancel" id="modal-cancel-btn">Cancel</button>
+        <button class="btn-modal-save" id="modal-save-btn">Save Changes ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ DELETE CONFIRM ════════════════════════════════════════════════════ -->
+  <div class="confirm-backdrop" id="confirm-modal" role="alertdialog" aria-modal="true">
+    <div class="confirm-box">
+      <span class="confirm-icon">🗑️</span>
+      <p class="confirm-title">Delete Registration?</p>
+      <p class="confirm-desc" id="confirm-desc">This will permanently remove the registration. This action cannot be undone.</p>
+      <div class="confirm-actions">
+        <button class="btn-confirm-cancel" id="confirm-cancel-btn">Keep It</button>
+        <button class="btn-confirm-delete" id="confirm-delete-btn">Yes, Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ TOAST ══════════════════════════════════════════════════════════════ -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="/admin/admin.js"></script>
+</body>
+</html>

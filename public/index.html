@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Summer Shine 3.0 Registration — July 17, 2026 · Umm Salal</title>
+  <meta name="description" content="Register for Summer Shine 3.0 — a one-day summer gathering for school students (Grade 3–10) on July 17, 2026 in Umm Salal, Bahrain. Outdoor activities, STEM, arts, sports, and more!" />
+  <meta property="og:title" content="Summer Shine 3.0 Registration" />
+  <meta property="og:description" content="A summer of fun, friendship, and discovery. July 17, 2026 · Umm Salal. Register now!" />
+  <meta property="og:type" content="website" />
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☀️</text></svg>" />
+</head>
+<body>
+
+  <!-- ── Header ── -->
+  <header class="site-header" id="site-header">
+    <div class="header-logo">
+      <span class="sun-emoji">☀️</span>
+      <span>Summer Shine 3.0</span>
+    </div>
+    <button class="header-cta" onclick="document.getElementById('register').scrollIntoView({behavior:'smooth'})">
+      Register Now →
+    </button>
+  </header>
+
+  <!-- ── Hero ── -->
+  <section class="hero" id="home" aria-labelledby="hero-title">
+
+    <!-- Background blobs -->
+    <div class="blob blob-1" aria-hidden="true"></div>
+    <div class="blob blob-2" aria-hidden="true"></div>
+    <div class="blob blob-3" aria-hidden="true"></div>
+    <div class="blob blob-4" aria-hidden="true"></div>
+
+    <!-- Floating dots -->
+    <div class="confetti-bg" aria-hidden="true" id="hero-dots"></div>
+
+    <div class="hero-inner">
+      <div class="hero-badge" aria-label="Event category">
+        🎉 Kids Summer Gathering &nbsp;·&nbsp; Grade 3–10
+      </div>
+
+      <h1 class="hero-title" id="hero-title">
+        <span class="shine">Summer Shine</span> 3.0
+      </h1>
+
+      <p class="hero-tagline">
+        A summer of fun, friendship, and discovery awaits! 🌟<br>
+        One unforgettable day filled with adventures, creativity, and new friends.
+      </p>
+
+      <div class="hero-details">
+        <div class="detail-pill">
+          <span class="pill-icon">📅</span>
+          <span>July 17, 2026</span>
+        </div>
+        <div class="detail-pill">
+          <span class="pill-icon">📍</span>
+          <span>Umm Salal</span>
+        </div>
+        <div class="detail-pill">
+          <span class="pill-icon">🎓</span>
+          <span>Grade 3 – Grade 10</span>
+        </div>
+      </div>
+
+      <a href="#register" class="hero-cta" id="hero-register-btn" onclick="event.preventDefault(); document.getElementById('register').scrollIntoView({behavior:'smooth'})">
+        Grab Your Spot! <span class="arrow">→</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Wave divider -->
+  <div class="wave-divider" aria-hidden="true">
+    <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#ffffff" />
+    </svg>
+  </div>
+
+  <!-- ── Activities Section ── -->
+  <section class="activities-section" id="activities" aria-labelledby="activities-title">
+    <div class="container text-center">
+      <div class="section-label">What's happening</div>
+      <h2 class="section-title" id="activities-title">A Day Packed with Amazing Activities 🎊</h2>
+      <p class="section-desc" style="margin: 0 auto 3rem;">
+        One jam-packed day with outdoor adventures, creative workshops, sports, STEM challenges, and so much more —
+        there's something exciting for every student!
+      </p>
+
+      <div class="activities-grid">
+        <div class="activity-card">
+          <span class="activity-icon">🌿</span>
+          <span class="activity-label">Outdoor Exploration &amp; Nature Walks</span>
+        </div>
+        <div class="activity-card">
+          <span class="activity-icon">⚽</span>
+          <span class="activity-label">Physical Activities &amp; Sports</span>
+        </div>
+        <div class="activity-card">
+          <span class="activity-icon">🎨</span>
+          <span class="activity-label">Creative &amp; Artistic Expression</span>
+        </div>
+        <div class="activity-card">
+          <span class="activity-icon">🔬</span>
+          <span class="activity-label">STEM / STEAM Activities</span>
+        </div>
+        <div class="activity-card">
+          <span class="activity-icon">🧩</span>
+          <span class="activity-label">Problem Solving &amp; Brain Games</span>
+        </div>
+        <div class="activity-card">
+          <span class="activity-icon">💛</span>
+          <span class="activity-label">Social &amp; Emotional Learning</span>
+        </div>
+        <div class="activity-card">
+          <span class="activity-icon">✂️</span>
+          <span class="activity-label">DIY Craft Workshops</span>
+        </div>
+        <div class="activity-card">
+          <span class="activity-icon">💻</span>
+          <span class="activity-label">Technology &amp; Media</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Wave divider 2 -->
+  <div class="wave-divider" aria-hidden="true" style="background:#fff; margin-bottom:-2px;">
+    <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M0,30 C480,60 960,0 1440,30 L1440,60 L0,60 Z" fill="#FFF8DC" />
+    </svg>
+  </div>
+
+  <!-- ── Registration Section ── -->
+  <section class="register-section" id="register" aria-labelledby="register-title">
+    <div class="container text-center">
+      <div class="section-label">Secure your spot</div>
+      <h2 class="section-title" id="register-title">Join the Fun — Register Now! 🚀</h2>
+      <p class="section-desc" style="margin: 0 auto;">
+        Fill in the details below and you're on your way to the best summer day ever. See you on July 17! 🌟
+      </p>
+    </div>
+
+    <!-- ── The Form Card ── -->
+    <div class="form-card" id="form-card">
+
+      <!-- Success Screen (hidden until submission) -->
+      <div id="success-screen" aria-live="polite">
+        <span class="success-icon" role="img" aria-label="celebration">🎉</span>
+        <h2 class="success-title">
+          You're in, <span class="success-student-name" id="success-name"></span>!
+        </h2>
+        <p style="color: var(--text-mid); margin-bottom: 1rem; font-size:1.05rem;">
+          Welcome to <strong>Summer Shine 3.0</strong> — we can't wait to see you there! 🌞
+        </p>
+        <div class="success-details">
+          <p><span>📅</span> <strong>Date:</strong> July 17, 2026</p>
+          <p><span>📍</span> <strong>Location:</strong> Umm Salal</p>
+          <p><span>🎓</span> <strong>For:</strong> Grade 3 – Grade 10</p>
+        </div>
+        <p class="success-hype">
+          Get ready for a day full of sports, STEM, art, nature walks, and amazing new friends.
+          Summer Shine 3.0 is going to be one for the memory books — so stay excited! ✨
+        </p>
+        <a id="share-btn" href="#" class="share-btn" target="_blank" rel="noopener noreferrer">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Tell a Friend on WhatsApp!
+        </a>
+      </div>
+
+      <!-- Registration Form -->
+      <form id="reg-form" novalidate autocomplete="on">
+
+        <!-- Student Name -->
+        <div class="form-group">
+          <label class="form-label" for="student_name">
+            Student's Full Name <span class="required-star" aria-label="required">*</span>
+          </label>
+          <input
+            type="text"
+            id="student_name"
+            name="student_name"
+            class="form-input"
+            placeholder="e.g. Ali Mohammed Al-Rashid"
+            autocomplete="name"
+            required
+            aria-required="true"
+            aria-describedby="student_name_error"
+          />
+          <span class="field-error" id="student_name_error" role="alert">Don't forget your name! 🙂</span>
+        </div>
+
+        <!-- Live greeting (appears as user types name) -->
+        <div class="name-greeting" id="name-greeting" aria-live="polite"></div>
+
+        <!-- Guardian Name -->
+        <div class="form-group">
+          <label class="form-label" for="guardian_name">
+            Guardian's Full Name <span class="required-star" aria-label="required">*</span>
+          </label>
+          <span class="form-microcopy">Parent or guardian filling this in 👋</span>
+          <input
+            type="text"
+            id="guardian_name"
+            name="guardian_name"
+            class="form-input"
+            placeholder="e.g. Mohammed Al-Rashid"
+            autocomplete="family-name"
+            required
+            aria-required="true"
+            aria-describedby="guardian_name_error"
+          />
+          <span class="field-error" id="guardian_name_error" role="alert">We need your guardian's name too 😊</span>
+        </div>
+
+        <!-- Contact Number -->
+        <div class="form-group">
+          <label class="form-label" for="contact_number">
+            Contact Number <span class="required-star" aria-label="required">*</span>
+          </label>
+          <span class="form-microcopy">Best number to reach the guardian 📱</span>
+          <input
+            type="tel"
+            id="contact_number"
+            name="contact_number"
+            class="form-input"
+            placeholder="e.g. 33001234"
+            autocomplete="tel"
+            required
+            aria-required="true"
+            aria-describedby="contact_number_error"
+          />
+          <span class="field-error" id="contact_number_error" role="alert">Please enter a valid phone number (digits only) 📱</span>
+        </div>
+
+        <!-- Class / Grade -->
+        <div class="form-group">
+          <label class="form-label" as="legend">
+            Class / Grade <span class="required-star" aria-label="required">*</span>
+          </label>
+          <span class="form-microcopy">Pick your grade for the 2025–26 school year 🎓</span>
+          <div class="grade-grid" role="group" aria-required="true" id="grade-group">
+            <input type="radio" name="class" id="grade3"  value="Grade 3"  class="grade-option" /> <label class="grade-label" for="grade3">Gr 3</label>
+            <input type="radio" name="class" id="grade4"  value="Grade 4"  class="grade-option" /> <label class="grade-label" for="grade4">Gr 4</label>
+            <input type="radio" name="class" id="grade5"  value="Grade 5"  class="grade-option" /> <label class="grade-label" for="grade5">Gr 5</label>
+            <input type="radio" name="class" id="grade6"  value="Grade 6"  class="grade-option" /> <label class="grade-label" for="grade6">Gr 6</label>
+            <input type="radio" name="class" id="grade7"  value="Grade 7"  class="grade-option" /> <label class="grade-label" for="grade7">Gr 7</label>
+            <input type="radio" name="class" id="grade8"  value="Grade 8"  class="grade-option" /> <label class="grade-label" for="grade8">Gr 8</label>
+            <input type="radio" name="class" id="grade9"  value="Grade 9"  class="grade-option" /> <label class="grade-label" for="grade9">Gr 9</label>
+            <input type="radio" name="class" id="grade10" value="Grade 10" class="grade-option" /> <label class="grade-label" for="grade10">Gr 10</label>
+          </div>
+          <span class="field-error" id="class_error" role="alert">Please select your grade 🎓</span>
+        </div>
+
+        <!-- Age -->
+        <div class="form-group">
+          <label class="form-label" for="age">
+            Age <span class="required-star" aria-label="required">*</span>
+          </label>
+          <input
+            type="number"
+            id="age"
+            name="age"
+            class="form-input"
+            placeholder="e.g. 11"
+            min="6" max="18"
+            required
+            aria-required="true"
+            aria-describedby="age_error"
+            style="max-width: 140px;"
+          />
+          <span class="field-error" id="age_error" role="alert">Age should be between 6 and 18 🎂</span>
+        </div>
+
+        <!-- Residing Area -->
+        <div class="form-group">
+          <label class="form-label" for="residing_area">
+            Residing Area <span class="required-star" aria-label="required">*</span>
+          </label>
+          <span class="form-microcopy">Where does the student live? 🏡</span>
+          <div class="form-select-wrapper">
+            <select
+              id="residing_area"
+              name="residing_area"
+              class="form-select"
+              required
+              aria-required="true"
+              aria-describedby="residing_area_error"
+            >
+              <option value="" disabled selected>Select your area…</option>
+              <option value="GUDAIBIYA">Gudaibiya</option>
+              <option value="CASENO">Caseno</option>
+              <option value="HIDD">Hidd</option>
+              <option value="JUFFAIR">Juffair</option>
+              <option value="SALMABAD">Salmabad</option>
+              <option value="SALMANIYA">Salmaniya</option>
+              <option value="BUDAYYA">Budayya</option>
+              <option value="KHALEEFA">Khaleefa</option>
+              <option value="SANAD">Sanad</option>
+              <option value="HAMAD TOWN">Hamad Town</option>
+              <option value="ISA TOWN">Isa Town</option>
+            </select>
+          </div>
+          <span class="field-error" id="residing_area_error" role="alert">Please select your area 📍</span>
+        </div>
+
+        <!-- Activities (optional) -->
+        <div class="form-group">
+          <label class="form-label" as="legend">
+            Favourite Activities <span style="font-weight:500; color: var(--text-light);">(optional)</span>
+          </label>
+          <span class="form-microcopy">Pick your favorites — the more the merrier! 🎊</span>
+          <div class="activities-checks" role="group" aria-label="Select activities">
+            <input type="checkbox" id="act1" name="activities" value="Outdoor Exploration &amp; Nature Walks" class="activity-check-input" />
+            <label class="activity-check-label" for="act1"><span class="act-icon">🌿</span> Outdoor Exploration &amp; Nature Walks</label>
+
+            <input type="checkbox" id="act2" name="activities" value="Physical Activities &amp; Sports" class="activity-check-input" />
+            <label class="activity-check-label" for="act2"><span class="act-icon">⚽</span> Physical Activities &amp; Sports</label>
+
+            <input type="checkbox" id="act3" name="activities" value="Creative &amp; Artistic Expression" class="activity-check-input" />
+            <label class="activity-check-label" for="act3"><span class="act-icon">🎨</span> Creative &amp; Artistic Expression</label>
+
+            <input type="checkbox" id="act4" name="activities" value="STEM/STEAM Activities" class="activity-check-input" />
+            <label class="activity-check-label" for="act4"><span class="act-icon">🔬</span> STEM / STEAM Activities</label>
+
+            <input type="checkbox" id="act5" name="activities" value="Problem Solving &amp; Brain Games" class="activity-check-input" />
+            <label class="activity-check-label" for="act5"><span class="act-icon">🧩</span> Problem Solving &amp; Brain Games</label>
+
+            <input type="checkbox" id="act6" name="activities" value="Social &amp; Emotional Learning" class="activity-check-input" />
+            <label class="activity-check-label" for="act6"><span class="act-icon">💛</span> Social &amp; Emotional Learning</label>
+
+            <input type="checkbox" id="act7" name="activities" value="DIY Craft Workshops" class="activity-check-input" />
+            <label class="activity-check-label" for="act7"><span class="act-icon">✂️</span> DIY Craft Workshops</label>
+
+            <input type="checkbox" id="act8" name="activities" value="Technology &amp; Media" class="activity-check-input" />
+            <label class="activity-check-label" for="act8"><span class="act-icon">💻</span> Technology &amp; Media</label>
+          </div>
+        </div>
+
+        <!-- Submit -->
+        <button type="submit" class="submit-btn" id="submit-btn">
+          Count Me In! 🎉
+        </button>
+
+        <p style="text-align:center; margin-top:0.75rem; font-size:0.82rem; color:var(--text-light);">
+          By registering, you confirm the student will attend Summer Shine 3.0 on July 17, 2026 in Umm Salal.
+        </p>
+
+      </form>
+    </div>
+  </section>
+
+  <!-- Confetti canvas -->
+  <canvas id="confetti-canvas" aria-hidden="true"></canvas>
+
+  <!-- ── Footer ── -->
+  <footer class="site-footer">
+    <div class="footer-logo">☀️ Summer Shine 3.0</div>
+    <p class="footer-info">Organized by <strong>RSC Bahrain</strong></p>
+    <p class="footer-info">
+      Questions? Email us at
+      <a href="mailto:info@rscbahrain.com">info@rscbahrain.com</a>
+      or call <a href="tel:+97300000000">+973 0000 0000</a>
+    </p>
+    <p style="margin-top: 0.75rem; opacity: 0.5; font-size: 0.78rem;">
+      © 2026 RSC Bahrain. All rights reserved.
+    </p>
+  </footer>
+
+  <script src="/app.js"></script>
+</body>
+</html>
