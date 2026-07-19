@@ -10,10 +10,6 @@
    ═══════════════════════════════════════════════════════════════════════════ */
 
 module.exports = {
-  // Set to true once you have pasted your Apps Script URL below
-  ENABLED: true,
-
-  // Paste your Apps Script Web App URL here
-  // Format: https://script.google.com/macros/s/XXXXXXXXXX/exec
+  ENABLED: true, // ← Make sure this is true!
   APPS_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbwmSP7OwySp3c5ZHQLifToX7UsRNy8oQt-Pbq2sZR7FAJCrtxQSzH0pesS_6vTVDI7Gbg/exec',
 };
