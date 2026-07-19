@@ -1,0 +1,14 @@
+# Node dependencies
+node_modules/
+
+# Local databases & temp files
+data/*.db
+data/*.db-journal
+.system_generated/
+scratch/
+.agents/
+.gemini/
+
+# OS files
+.DS_Store
+Thumbs.db
